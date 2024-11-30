@@ -1,0 +1,26 @@
+<app-header />
+<!-- main - hmll tag -->
+<main>
+  <!-- ul = unordered list -->
+  <ul id="users">
+    @for (user of users; track user.id) {
+      <li>
+        <!-- select - is out custom event created in user.component.ts which is emitting value id-->
+         <!-- on the other side, onSelectUser() is taking as argument $event which then can consume id we emitted from user component -->
+         <app-user
+          [id]="user.id"
+          [avatar1]="user.avatar"
+          [name1]="user.name"
+          [avatar2]="user.avatar"
+          name2="bzvz"
+          [user]="user"
+          (select)="onSelectUser($event)"
+        />
+      </li>
+    }
+  </ul>
+
+  <ul>
+    <app-tasks [name]="selectedUser ? selectedUser.name : 'default-value'"/>    
+  </ul>
+</main>
